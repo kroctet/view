@@ -41,7 +41,6 @@ void way_loop(Way *);
 void way_free(Way *);
 
 #if defined(WAY_IMP) || defined(ALL_IMP)
-//#define _POSIX_C_SOURCE 200112L
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
@@ -159,12 +158,6 @@ registry_global(void *data, struct wl_registry *wl_registry, uint32_t name, cons
     } else if(strcmp(interface, wl_seat_interface.name) == 0) {
         way->wl_seat = wl_registry_bind(wl_registry, name, &wl_seat_interface, 1);
         wl_seat_add_listener(way->wl_seat, &wl_seat_listener, way);
-    } else if(strcmp(interface, xdg_surface_interface.name) == 0) {
-        /*
-        way->wl_seat = wl_registry_bind(wl_registry, name, &wl_seat_interface, 1);
-        wl_seat_add_listener(way->wl_seat, &wl_seat_listener, way);
-        */
-        printf("RIGHT HERE\n");
     }
 }
 static void registry_global_remove(void *data, struct wl_registry *wl_registry, uint32_t name) {}
@@ -217,7 +210,7 @@ way_init_window(Way *way, int w, int h) {
     way->bitmap = emmap(NULL, way->size, PROT_READ | PROT_WRITE, MAP_SHARED, way->fd, 0);
     way->wl_pool = wl_shm_create_pool(way->wl_shm, way->fd, way->size);
     way->wl_buffer = wl_shm_pool_create_buffer(way->wl_pool, 0, way->w, way->h, way->linesize, WL_SHM_FORMAT_XRGB8888);
-    memset(way->bitmap, 255, way->size);
+    memset(way->bitmap, 0, way->size);
     wl_surface_attach(way->wl_surface, way->wl_buffer, 0, 0);
 }
 
