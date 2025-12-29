@@ -20,9 +20,11 @@ VIEW_EXTERN void *disp;
 VIEW_EXTERN Book *book;
 VIEW_EXTERN Page *page, *undo, *tmp;
 VIEW_EXTERN int info_visible;
-VIEW_EXTERN int db VIEW_SET_VAL(= 1);
+VIEW_EXTERN int db_flag VIEW_SET_VAL(= 1);
 VIEW_EXTERN int color_format VIEW_SET_VAL(= BGRA);
 VIEW_EXTERN Page *(*page_load)(Page *, double, double);
 VIEW_EXTERN void (*dump_link)(Page *page);
+
+void view_quit(void);
 
 #endif

@@ -1,6 +1,6 @@
 FB = 1
-X11 = 1
-WAYLAND = 1
+X11 = 0
+WAYLAND = 0
 
 CC=cc
 SRC = src/view.c src/magic.c src/book.c src/db.c

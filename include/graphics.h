@@ -80,7 +80,7 @@
             goto draw; \
         case KEY_QUIT: \
             funcprefix ## quit(); \
-            exit(1); \
+            view_quit(); \
             break; \
         case '0' ... '9': \
             mult *= 10; \
