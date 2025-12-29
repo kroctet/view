@@ -4,7 +4,7 @@ view is a minimal document viewer that doesn't on depen on heavy graphics toolki
 
 ## building
 
-to build for framebuffer simply run
+to build for the framebuffer simply run
 ```
 make
 ```
